@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Function</title>
+</head>
+<body>
+    <img src="" id="moon" width="480px"/>
+    <script>
+        console.log("about to fecth a moon image");
+
+        catchMoon().catch(error =>{
+            console.log("error!");
+            console.error(error);
+        });
+
+        async function catchMoon(){
+            const response = await fetch('4.jpg');
+            const blob = await response.blob();
+            document.getElementById("moon").src=URL.createObjectURL(blob);
+        }
+
+
+
+
+        // //fetch will give the request to web browser
+        // fetch('4.jpg').then(response =>{
+        //     //then we are printing the response
+        //     console.log(response);
+        //     //we have to deal with the response by converting into blob
+        //     return response.blob();
+        // }).then(blob =>{
+        //     console.log(blob);
+        //     //we are using dom element(<img>) to print the image into the web page
+        //     document.getElementById("moon").src=URL.createObjectURL(blob);
+        // }).catch(error =>{
+        //     console.log('error');
+        //     console.error(error);
+        // });
+    </script>
+</body>
+</html>
